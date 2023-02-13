@@ -84,13 +84,13 @@ async def mes_take_candy(message: types.Message):
     count = message.text
     if len(duel) == 0:
         if new_game:
-            if message.text.isdigit() and 0 < int(message.text) < 29:
-                total -= int(message.text)
+            if count.isdigit() and 0 < int(count) < 29:
+                total -= int(count)
                 if total <= 0:
                     await message.answer(f'Ура! {name} ты победил!')
                     new_game = False
                 else:
-                    await message.answer(f'{name} взял {message.text} конфет. '
+                    await message.answer(f'{name} взял {count} конфет. '
                                          f'На столе осталось {total}')
                     await bot_turn(message)
             else:
@@ -100,14 +100,14 @@ async def mes_take_candy(message: types.Message):
             name = message.from_user.first_name
             count = message.text
             if new_game:
-                if message.text.isdigit() and 0 < int(message.text) < 29:
-                    total -= int(message.text)
+                if count.isdigit() and 0 < int(count) < 29:
+                    total -= int(count)
                     if total <= 0:
                         await message.answer(f'Ура! {name} ты победил!')
                         await dp.bot.send_message(enemy_id(), 'К сожалению ты проиграл! Твой оппонент оказался умнее! :)')
                         new_game = False
                     else:
-                        await message.answer(f'{name} взял {message.text} конфет. '
+                        await message.answer(f'{name} взял {count} конфет. '
                                              f'На столе осталось {total}')
                         await dp.bot.send_message(enemy_id(), f'Теперь твой ход, бери конфеты! На столе осталось ровно {total}')
                         switch_players()
