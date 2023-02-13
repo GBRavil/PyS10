@@ -1,7 +1,6 @@
-import random
-
 from aiogram import types
 from loader import dp
+import random
 
 max_count = 150
 total = 0
