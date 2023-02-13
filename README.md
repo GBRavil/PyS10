@@ -1,4 +1,4 @@
-pip freeze
+pip freeze => проверить какие библиотеки установлены
 python -m venv venv => создание виртуального окруженя
 source venv/Scripts/activate => активация виртуального окружения
 deactivate => деактивация виртуального окруженя

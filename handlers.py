@@ -9,7 +9,6 @@ duel = []
 first = 0
 current = 0
 
-
 @dp.message_handler(commands=['start', 'старт'])
 async def mes_start(message: types.Message):
     name = message.from_user.first_name
@@ -17,6 +16,14 @@ async def mes_start(message: types.Message):
                          f'Для настройки конфет введи команду /set и укажи количество конфет\n'
                          f'Или /duel и id оппонента, для игры вдвоем')
     print(message.from_user.id)
+    player1_id = 0
+    player2_id = 0
+    if player1_id == 0:
+        player1_id = int(message.from_user.id)
+    else:
+        player2_id = int(message.from_user.id)
+        await dp.bot.send_message(player1_id, f'Оппонент с id {player2_id} готов к дуэли')
+        await dp.bot.send_message(player2_id, f'Вызов брошен, ожидаем согласие на дуэль')
 
 
 @dp.message_handler(commands=['new_game'])
